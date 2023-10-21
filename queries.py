@@ -132,6 +132,7 @@ AND stores.name NOT LIKE '%Loja Treinamento%'
 ) AS date_range
 ON DATE(qa.updated_at) BETWEEN date_range.minDate AND date_range.maxDate
 WHERE aa.answer_type = 'tasks'
+AND tasks.name = 'rupture'
 AND stores.id NOT IN (
     SELECT id FROM stores WHERE name LIKE '%Loja Treinamento%'
 );
