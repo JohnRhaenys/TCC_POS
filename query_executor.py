@@ -12,8 +12,8 @@ def connect_to_db():
     )
 
 
-def execute_query(query, output_file):
+def execute_query(query):
     db = connect_to_db()
-    df = pd.read_sql(query, con=db)
-    df.to_csv(output_file, index=False)
+    dataframe = pd.read_sql(query, con=db)
     db.close()
+    return dataframe
