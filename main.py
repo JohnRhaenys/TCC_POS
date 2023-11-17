@@ -1,11 +1,10 @@
-from queries import CRITICAL_DATES_QUERY, RUPTURE_QUERY, STOCK_COUNT_QUERY
-from query_executor import execute_query
+from src.scripts.data_manager import get_data
+from src.scripts.processor import process_data
 
 
 def main():
-    execute_query(query=CRITICAL_DATES_QUERY, output_file='critical_dates.csv')
-    execute_query(query=RUPTURE_QUERY, output_file='ruptures.csv')
-    execute_query(query=STOCK_COUNT_QUERY, output_file='stock_count.csv')
+    critical_dates, ruptures, stock_count = get_data()
+    process_data(critical_dates, ruptures, stock_count)
 
 
 if __name__ == "__main__":
