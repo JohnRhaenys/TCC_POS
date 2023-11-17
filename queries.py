@@ -8,7 +8,7 @@ brands.name AS nomeMarca,
 industries.document AS cnpjIndustria,
 industries.social_reason AS razaoSocialIndustria,
 industries.trade_name AS nomeFantasiaIndustria,
-critical_dates.updated_at AS dataRegistroResposta,
+DATE(critical_dates.updated_at) AS dataRegistroResposta,
 critical_dates.date AS dataCritica,
 critical_dates.quantity AS quantidade,
 critical_dates.measure AS medida,
@@ -133,7 +133,8 @@ AND stores.name NOT LIKE '%Loja Treinamento%'
 ON DATE(qa.updated_at) BETWEEN date_range.minDate AND date_range.maxDate
 WHERE aa.answer_type = 'tasks'
 AND tasks.name = 'rupture'
+AND qa.product_type = 'product_contracts'
 AND stores.id NOT IN (
-    SELECT id FROM stores WHERE name LIKE '%Loja Treinamento%'
+	SELECT id FROM stores WHERE name LIKE '%Loja Treinamento%'
 );
 """
